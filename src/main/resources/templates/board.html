@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>World in Flames</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            gap: 2px;
+            justify-content: center;
+        }
+        .tile {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        /* Tile types */
+        .TRAP { background: #b00020; color: white; }
+        .HEAL { background: #2e7d32; color: white; }
+        .GOAL { background: #f9a825; color: black; }
+        .NORMAL { background: #ccc; color: black; }
+    </style>
+</head>
+<body>
+<h2>World in Flames</h2>
+
+<div class="board">
+    <div th:each="tile : ${tiles}"
+         th:class="'tile ' + ${tile.type}"
+         th:text="${tile.type.charAt(0)}">
+    </div>
+</div>
+
+</body>
+</html>
